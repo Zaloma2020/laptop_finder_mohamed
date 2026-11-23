@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Official Tailwind plugins:
+   - forms: styles the search box, selects, range slider and checkboxes
+   - typography: styles the laptop description (.prose) on details.html */
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+/* ---------- Theme colours (palettes for both modes) ---------- */
+@theme static {
+  /* Performance Mode: dark background, bold orange accent */
+  --color-perf-bg: #0f1115;
+  --color-perf-surface: #1a1d24;
+  --color-perf-line: #303642;
+  --color-perf-ink: #f3f4f6;
+  --color-perf-muted: #a9afbd;
+  --color-perf-accent: #ff7a1a;
+  --color-perf-accent-ink: #1a0d00;
+
+  /* Battery Saver Mode: light background, green accents */
+  --color-battery-bg: #f1f8f2;
+  --color-battery-surface: #ffffff;
+  --color-battery-line: #c9e0ce;
+  --color-battery-ink: #12301b;
+  --color-battery-muted: #4a6a53;
+  --color-battery-accent: #15803d;
+  --color-battery-accent-ink: #ffffff;
+}
+
+/* Semantic variables: Performance Mode is the default,
+   data-theme="battery" on <html> swaps every value. */
+:root {
+  color-scheme: dark;
+  --page: var(--color-perf-bg);
+  --surface: var(--color-perf-surface);
+  --line: var(--color-perf-line);
+  --ink: var(--color-perf-ink);
+  --muted: var(--color-perf-muted);
+  --accent: var(--color-perf-accent);
+  --accent-ink: var(--color-perf-accent-ink);
+}
+
+:root[data-theme="battery"] {
+  color-scheme: light;
+  --page: var(--color-battery-bg);
+  --surface: var(--color-battery-surface);
+  --line: var(--color-battery-line);
+  --ink: var(--color-battery-ink);
+  --muted: var(--color-battery-muted);
+  --accent: var(--color-battery-accent);
+  --accent-ink: var(--color-battery-accent-ink);
+}
+
+/* Turns the semantic variables into utilities: bg-page, bg-card, text-ink ... */
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+}
+
+/* Typography plugin colours follow the active theme
+   (no Tailwind utility exists for these plugin variables). */
+.prose {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-bullets: var(--accent);
+}
+
+/* ---------- Reusable component classes ---------- */
+@layer components {
+  /* Used on laptop cards, skeleton cards, stat cards and summary boxes */
+  .laptop-card {
+    @apply flex flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-sm transition duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg focus-within:border-accent;
+  }
+
+  /* Primary button: details links, compare buttons, retry, filters */
+  .btn-action {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition duration-200 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-95;
+  }
+
+  /* Secondary outlined button: favorites, clear, theme switch */
+  .btn-ghost {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-line bg-transparent px-4 py-2 text-sm font-semibold text-ink transition duration-200 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-95;
+  }
+
+  /* Form controls (works together with @tailwindcss/forms) */
+  .field {
+    @apply w-full rounded-lg border-line bg-card text-ink placeholder:text-muted transition duration-200 focus:border-accent focus:ring-1 focus:ring-accent;
+  }
+
+  .badge {
+    @apply inline-block rounded-full border border-line px-2.5 py-0.5 text-xs font-medium capitalize text-muted;
+  }
+}
