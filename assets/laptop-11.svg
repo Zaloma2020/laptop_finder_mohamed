@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Legion 5i">
+<rect width="400" height="300" fill="#e8edf2"/>
+<rect x="85" y="55" width="230" height="150" rx="10" fill="#2b2f38"/>
+<rect x="95" y="65" width="210" height="130" rx="4" fill="#fb923c"/>
+<text x="200" y="140" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#10141a" text-anchor="middle">Lenovo</text>
+<text x="200" y="168" font-family="Arial, sans-serif" font-size="14" fill="#10141a" text-anchor="middle">gaming</text>
+<path d="M55 212 H345 L330 236 Q328 240 322 240 H78 Q72 240 70 236 Z" fill="#9aa3af"/>
+<rect x="165" y="214" width="70" height="5" rx="2.5" fill="#6b7280"/>
+</svg>
