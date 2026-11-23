@@ -4,7 +4,7 @@ A responsive multi-page web app that helps students browse laptops, search and f
 read full specifications, save favorites and compare them side by side.
 Built with vanilla JavaScript (ES modules) and Tailwind CSS 4.
 
-GitHub repo: <PASTE YOUR GITHUB LINK HERE>
+GitHub repo: <https://github.com/Zaloma2020/laptop_finder_mohamed>
 
 ## Install and build
 
