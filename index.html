@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Laptop Finder</title>
+  <script>
+    // Applies the saved theme before the page paints, so there is no flash on reload.
+    try { document.documentElement.dataset.theme = JSON.parse(localStorage.getItem("lf_theme")) || "performance"; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="flex min-h-screen flex-col bg-page text-ink antialiased transition-colors duration-200">
+  <header id="site-header" class="sticky top-0 z-40 border-b border-line bg-page"></header>
+
+  <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+    <section class="py-6 sm:py-10">
+      <h1 class="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">Find the right laptop for your studies</h1>
+      <p class="mt-4 max-w-2xl text-lg text-muted">Search a growing catalogue, filter by price, RAM and battery life, save your favorites and compare up to four of them side by side.</p>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a href="laptops.html" class="btn-action px-6 py-3 text-base">Browse laptops</a>
+        <a href="compare.html" class="btn-ghost px-6 py-3 text-base">Compare favorites</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="stats-title" class="mt-6">
+      <h2 id="stats-title" class="mb-4 text-2xl font-bold">The catalogue at a glance</h2>
+      <div id="stats" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="laptop-card h-24 animate-pulse"></div>
+        <div class="laptop-card h-24 animate-pulse"></div>
+        <div class="laptop-card h-24 animate-pulse"></div>
+        <div class="laptop-card h-24 animate-pulse"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="pages-title" class="mt-12">
+      <h2 id="pages-title" class="mb-4 text-2xl font-bold">Where to next</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="laptops.html" class="laptop-card p-5">
+          <span class="text-lg font-bold">Laptops</span>
+          <span class="mt-1 text-sm text-muted">Search, filter and sort every laptop.</span>
+        </a>
+        <a href="favorites.html" class="laptop-card p-5">
+          <span class="text-lg font-bold">Favorites</span>
+          <span class="mt-1 text-sm text-muted">Your saved laptops with total and average price.</span>
+        </a>
+        <a href="compare.html" class="laptop-card p-5">
+          <span class="text-lg font-bold">Compare</span>
+          <span class="mt-1 text-sm text-muted">Two to four favorites in one table.</span>
+        </a>
+        <a href="details.html?id=1" class="laptop-card p-5">
+          <span class="text-lg font-bold">Laptop details</span>
+          <span class="mt-1 text-sm text-muted">Full specifications of a single laptop.</span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="featured-title" class="mt-12">
+      <h2 id="featured-title" class="mb-4 text-2xl font-bold">Longest battery life</h2>
+      <div id="featured" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="border-t border-line"></footer>
+  <script type="module" src="src/js/home.js"></script>
+</body>
+</html>

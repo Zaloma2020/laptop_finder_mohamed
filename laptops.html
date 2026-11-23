@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laptops - Student Laptop Finder</title>
+  <script>
+    // Applies the saved theme before the page paints, so there is no flash on reload.
+    try { document.documentElement.dataset.theme = JSON.parse(localStorage.getItem("lf_theme")) || "performance"; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="flex min-h-screen flex-col bg-page text-ink antialiased transition-colors duration-200">
+  <header id="site-header" class="sticky top-0 z-40 border-b border-line bg-page"></header>
+
+  <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold sm:text-4xl">Laptops</h1>
+    <p class="mt-2 text-muted">Search by name or brand, then narrow the list with the filters.</p>
+
+    <form id="filters" class="mt-6 grid grid-cols-1 gap-4 rounded-2xl border border-line bg-card p-4 sm:grid-cols-2 lg:grid-cols-4" role="search" aria-label="Laptop filters">
+      <div class="sm:col-span-2 lg:col-span-2">
+        <label for="search" class="mb-1 block text-sm font-semibold">Search</label>
+        <input id="search" type="search" class="field" placeholder="Try &quot;Dell&quot; or &quot;Zephyr&quot;" autocomplete="off">
+      </div>
+      <div>
+        <label for="category" class="mb-1 block text-sm font-semibold">Category</label>
+        <select id="category" class="field">
+          <option value="all">All categories</option>
+          <option value="ultrabook">Ultrabook</option>
+          <option value="gaming">Gaming</option>
+          <option value="2-in-1">2-in-1</option>
+          <option value="creator">Creator</option>
+          <option value="budget">Budget</option>
+        </select>
+      </div>
+      <div>
+        <label for="sort" class="mb-1 block text-sm font-semibold">Sort by</label>
+        <select id="sort" class="field">
+          <option value="default">Default order</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="battery-desc">Battery life: longest first</option>
+          <option value="battery-asc">Battery life: shortest first</option>
+          <option value="weight-asc">Weight: lightest first</option>
+          <option value="weight-desc">Weight: heaviest first</option>
+        </select>
+      </div>
+      <div>
+        <label for="max-price" class="mb-1 block text-sm font-semibold">Maximum price: <output id="price-label" for="max-price" class="text-accent">-</output></label>
+        <input id="max-price" type="range" min="0" max="3000" step="50" value="3000" class="w-full cursor-pointer accent-accent">
+      </div>
+      <div>
+        <label for="min-ram" class="mb-1 block text-sm font-semibold">Minimum RAM</label>
+        <select id="min-ram" class="field">
+          <option value="0">Any</option>
+          <option value="8">8 GB or more</option>
+          <option value="16">16 GB or more</option>
+          <option value="32">32 GB or more</option>
+        </select>
+      </div>
+      <div>
+        <label for="min-battery" class="mb-1 block text-sm font-semibold">Minimum battery life</label>
+        <select id="min-battery" class="field">
+          <option value="0">Any</option>
+          <option value="8">8 hours or more</option>
+          <option value="12">12 hours or more</option>
+          <option value="15">15 hours or more</option>
+        </select>
+      </div>
+      <div class="flex items-end">
+        <button type="button" id="reset-filters" class="btn-ghost w-full">Reset filters</button>
+      </div>
+    </form>
+
+    <p id="result-count" class="mt-6 font-semibold" aria-live="polite">Loading laptops...</p>
+    <div id="laptop-grid" class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </main>
+
+  <footer id="site-footer" class="border-t border-line"></footer>
+  <script type="module" src="src/js/catalogue.js"></script>
+</body>
+</html>
