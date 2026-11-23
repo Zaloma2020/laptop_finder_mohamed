@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laptop details - Student Laptop Finder</title>
+  <script>
+    // Applies the saved theme before the page paints, so there is no flash on reload.
+    try { document.documentElement.dataset.theme = JSON.parse(localStorage.getItem("lf_theme")) || "performance"; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="flex min-h-screen flex-col bg-page text-ink antialiased transition-colors duration-200">
+  <header id="site-header" class="sticky top-0 z-40 border-b border-line bg-page"></header>
+
+  <main id="details" class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8"></main>
+
+  <footer id="site-footer" class="border-t border-line"></footer>
+  <script type="module" src="src/js/details.js"></script>
+</body>
+</html>

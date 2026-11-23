@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites - Student Laptop Finder</title>
+  <script>
+    // Applies the saved theme before the page paints, so there is no flash on reload.
+    try { document.documentElement.dataset.theme = JSON.parse(localStorage.getItem("lf_theme")) || "performance"; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="flex min-h-screen flex-col bg-page text-ink antialiased transition-colors duration-200">
+  <header id="site-header" class="sticky top-0 z-40 border-b border-line bg-page"></header>
+
+  <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h1 class="text-3xl font-extrabold sm:text-4xl">Favorites</h1>
+        <p class="mt-2 text-muted">Laptops you saved. They stay here after you reload the page.</p>
+      </div>
+      <div class="flex flex-col gap-2 sm:flex-row">
+        <a id="go-compare" href="compare.html" class="btn-action hidden">Compare favorites</a>
+        <button type="button" id="clear-favorites" class="btn-ghost">Clear all</button>
+      </div>
+    </div>
+
+    <div id="summary" class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3"></div>
+    <div id="favorites-grid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </main>
+
+  <footer id="site-footer" class="border-t border-line"></footer>
+  <script type="module" src="src/js/favorites.js"></script>
+</body>
+</html>
